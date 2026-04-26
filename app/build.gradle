@@ -60,6 +60,7 @@ android {
 }
 
 dependencies {
+    // 你的依赖配置，保持原样：
     // 核心Android依赖
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -75,6 +76,7 @@ dependencies {
     implementation project(':quickjs')
 }
 
+// 【关键：把下面这段移到这里】
 applicationVariants.configureEach { variant ->
     variant.outputs.configureEach { output ->
         def flavorNames = variant.productFlavors.collect { it.name == "java" ? "java" : it.name }.join('-')
