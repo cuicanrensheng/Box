@@ -23,7 +23,6 @@ android {
 
     productFlavors {
         hisense {
-            // 海信的
             applicationId 'com.github.hisense.osc.tk'
             dimension = "brand"
         }
@@ -47,6 +46,7 @@ android {
             minifyEnabled false
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -57,10 +57,18 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    // 【关键】把 applicationVariants 写在 android {} 内部，buildTypes/productFlavors 之后
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach { output ->
+            def flavorNames = variant.productFlavors.collect { it.name == "java" ? "java" : it.name }.join('-')
+            def fileName = "TVBox_${variant.buildType.name}-${flavorNames}.apk"
+            outputFileName = fileName
+        }
+    }
 }
 
 dependencies {
-    // 你的依赖配置，保持原样：
     // 核心Android依赖
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -70,18 +78,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    // TVBoxOSC原生依赖（仅移除Python相关）
+    // TVBoxOSC原生依赖
     implementation 'com.yanzhenjie.andserver:api:2.1.12'
     kapt 'com.yanzhenjie.andserver:compiler:2.1.12'
     implementation project(':quickjs')
-}
-
-// 【关键：把下面这段移到这里】
-applicationVariants.configureEach { variant ->
-    variant.outputs.configureEach { output ->
-        def flavorNames = variant.productFlavors.collect { it.name == "java" ? "java" : it.name }.join('-')
-        // 构建自定义文件名
-        def fileName = "TVBox_${variant.buildType.name}-${flavorNames}.apk"
-        outputFileName = fileName
-    }
 }
