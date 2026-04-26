@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 【关键】必须在根标签声明 xmlns:tv 命名空间 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tv="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -68,41 +70,41 @@
                 android:layout_marginRight="@dimen/vs_15"
                 android:orientation="horizontal"
                 android:tag="tv_speed_top">
+             
+			TextView
+                android:id="@+id/tv_MPBS_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginEnd="@dimen/vs_2"
+                android:layout_marginRight="@dimen/vs_2"
+                android:gravity="right"
+                android:shadowColor="@color/color_FF000000"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="3"
+                android:text="Mbps"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="@dimen/ts_16"
+                android:textStyle="bold" /> 
+               
 
-                <TextView
-                    android:id="@+id/tv_play_speed_top"
-                    android:layout_width="@dimen/vs_70"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:gravity="right"
-                    android:shadowColor="@color/color_FF000000"
-                    android:shadowDx="0"
-                    android:shadowDy="0"
-                    android:shadowRadius="3"
-                    android:tag="play_speed_top"
-                    android:text="Speed"
-                    android:textColor="@color/color_FFFFFF"
-                    android:textSize="@dimen/ts_22"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_MPBS_top"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginStart="@dimen/vs_2"
-                    android:layout_marginLeft="@dimen/vs_2"
-                    android:gravity="right"
-                    android:shadowColor="@color/color_FF000000"
-                    android:shadowDx="0"
-                    android:shadowDy="0"
-                    android:shadowRadius="3"
-                    android:text="Mbps"
-                    android:textColor="@color/color_FFFFFF"
-                    android:textSize="@dimen/ts_16"
-                    android:textStyle="bold" />
+             <TextView
+                 android:id="@+id/tv_MPBS_top_alt"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="bottom|right"
+                 android:layout_marginEnd="@dimen/vs_2"
+                 android:layout_marginRight="@dimen/vs_2"
+                 android:gravity="right"
+                 android:shadowColor="@color/color_FF000000"
+                 android:shadowDx="0"
+                 android:shadowDy="0"
+                 android:shadowRadius="3"
+                 android:text="Mbps"
+                 android:textColor="@color/color_FFFFFF"
+                 android:textSize="@dimen/ts_16"
+                 android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
