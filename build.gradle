@@ -1,44 +1,42 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.9.25"
     repositories {
-        // 调整顺序：优先阿里镜像的google源，解决Android工具链依赖拉取
+        // 1. 优先官方源，避免阿里镜像不稳定
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+
+        // 2. 阿里云镜像作为备用
         maven { url "https://maven.aliyun.com/repository/google" }
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url "https://maven.aliyun.com/repository/central" }
         maven { url "https://maven.aliyun.com/repository/releases" }
         maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
-        google()
-        mavenCentral()
-        gradlePluginPortal()
+
         maven { url "https://jitpack.io" }
         maven { url "https://storage.googleapis.com/r8-releases/raw" }
-        // 【关键：移除chaquo源，同时在app/build.gradle中删除对应的插件和配置】
-        // maven { url "https://chaquo.com/maven" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
         classpath("com.android.tools:r8:8.5.35")
         classpath 'com.yanzhenjie.andserver:plugin:2.1.12'
-        // 【关键：移除chaquo插件依赖，和你之前删除的Python配置对应】
-        // classpath "com.chaquo.python:gradle:12.0.1"
     }
 }
 
 allprojects {
     repositories {
-        // 同样调整顺序，优先国内源
+        // 同样调整顺序
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+
         maven { url "https://maven.aliyun.com/repository/google" }
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url "https://maven.aliyun.com/repository/central" }
         maven { url "https://maven.aliyun.com/repository/releases" }
         maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
-        google()
-        mavenCentral()
-        gradlePluginPortal()
+
         maven { url "https://jitpack.io" }
     }
 }
