@@ -1,46 +1,27 @@
 buildscript {
-    ext.kotlin_version = "1.9.25"
     repositories {
-        // 1. 优先官方源，避免阿里镜像不稳定
         google()
         mavenCentral()
-        gradlePluginPortal()
-
-        // 2. 阿里云镜像作为备用
         maven { url "https://maven.aliyun.com/repository/google" }
-        maven { url "https://maven.aliyun.com/repository/public" }
         maven { url "https://maven.aliyun.com/repository/central" }
-        maven { url "https://maven.aliyun.com/repository/releases" }
-        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
-
         maven { url "https://jitpack.io" }
-        maven { url "https://storage.googleapis.com/r8-releases/raw" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath("com.android.tools:r8:8.5.35")
-        classpath 'classpath 'com.yanzhenjie.andserver:plugin:2.1.10'
+        classpath 'com.yanzhenjie.andserver:plugin:2.1.10'
     }
 }
 
 allprojects {
     repositories {
-        // 同样调整顺序
         google()
         mavenCentral()
-        gradlePluginPortal()
-
         maven { url "https://maven.aliyun.com/repository/google" }
-        maven { url "https://maven.aliyun.com/repository/public" }
         maven { url "https://maven.aliyun.com/repository/central" }
-        maven { url "https://maven.aliyun.com/repository/releases" }
-        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
-
         maven { url "https://jitpack.io" }
     }
 }
 
-tasks.register('clean', Delete) {
+task clean(type: Delete) {
     delete rootProject.buildDir
 }
