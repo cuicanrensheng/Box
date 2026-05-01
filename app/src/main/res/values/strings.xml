@@ -3,6 +3,8 @@
     <string name="app_name">TVBox</string>
     <string name="app_home">Home</string>
     <string name="app_source"></string>
+    <string name="default_live_source_url">https://raw.githubusercontent.com/cuicanrensheng/IPTV/refs/heads/main/playlist%20.m3u</string>
+
 
     // Home Page //
     <string name="hm_ok">Load Complete</string>
