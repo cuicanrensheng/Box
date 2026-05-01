@@ -79,7 +79,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // TVBoxOSC原生依赖
-    implementation 'com.yanzhenjie.andserver:api:2.1.12'
-    kapt 'com.yanzhenjie.andserver:compiler:2.1.12'
+    implementation 'com.yanzhenjie.andserver:api:2.1.11'
+    kapt 'com.yanzhenjie.andserver:compiler:2.1.11'
     implementation project(':quickjs')
 }
