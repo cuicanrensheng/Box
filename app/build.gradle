@@ -1,40 +1,18 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    id 'com.yanzhenjie.andserver'
 }
 
 android {
-    namespace "com.github.tvbox.osc"
-    compileSdk 34
-    buildToolsVersion "34.0.0"
+    namespace "com.github.takagen99.box"
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.github.tvbox.osc"
+        applicationId "com.github.takagen99.box"
         minSdk 21
-        targetSdk 34
+        targetSdk 33
         versionCode 1
-        versionName "1.0.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    flavorDimensions "brand", "mode"
-
-    productFlavors {
-        hisense {
-            applicationId 'com.github.hisense.osc.tk'
-            dimension = "brand"
-        }
-        normal {
-            dimension = "brand"
-        }
-
-        java {
-            dimension = "mode"
-            minSdkVersion 21
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+        versionName "1.0"
     }
 
     buildTypes {
@@ -42,44 +20,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            minifyEnabled false
-        }
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        viewBinding true
-    }
-
-    // 【关键】把 applicationVariants 写在 android {} 内部，buildTypes/productFlavors 之后
-    applicationVariants.configureEach { variant ->
-        variant.outputs.configureEach { output ->
-            def flavorNames = variant.productFlavors.collect { it.name == "java" ? "java" : it.name }.join('-')
-            def fileName = "TVBox_${variant.buildType.name}-${flavorNames}.apk"
-            outputFileName = fileName
-        }
-    }
 }
 
 dependencies {
-    // 核心Android依赖
-    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    // TVBoxOSC原生依赖
+    // AndServer 依赖
     implementation 'com.yanzhenjie.andserver:api:2.1.10'
-    kapt 'com.yanzhenjie.andserver:processor:2.1.10'
-    implementation project(':quickjs')
+    annotationProcessor 'com.yanzhenjie.andserver:processor:2.1.10'
 }
