@@ -25,6 +25,11 @@
             <enum name="type_center_crop" value="5"/>
         </attr>
         <attr name="playerBackgroundColor" format="color"/>
+        <!-- 👇 以下是修复错误必须添加的部分 -->
+        <attr name="surface_type" format="enum">
+            <enum name="surface_view" value="0"/>
+            <enum name="texture_view" value="1"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="lbBaseGridView">
@@ -66,13 +71,10 @@
 
     <attr name="startColor" format="reference|color" />
     <attr name="topDelta" format="float" />
-    <!-- Selected Paint Color (color). -->
     <attr name="endColor" format="reference|color" />
 
     <declare-styleable name="CardViewShadow">
-        <!-- Default Paint Color (color). -->
         <attr name="startColor" />
-        <!-- Selected Paint Color (color). -->
         <attr name="endColor" />
         <attr name="topDelta" />
     </declare-styleable>
